@@ -11,9 +11,16 @@ from pathlib import Path
 
 try:
     import fitz  # PyMuPDF
-except ImportError:
-    print("Error: PyMuPDF がインストールされていません。")
-    print("pip install PyMuPDF を実行してください。")
+except ImportError as e:
+    print("Error: PyMuPDF のインポートに失敗しました。")
+    print(f"詳細: {e}")
+    print("\nインストール方法:")
+    print("  pip install PyMuPDF")
+    print("または")
+    print("  pip install pymupdf")
+    sys.exit(1)
+except Exception as e:
+    print(f"Error: 予期しないエラーが発生しました: {e}")
     sys.exit(1)
 
 
